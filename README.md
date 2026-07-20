@@ -1,2 +1,2 @@
 # masnae.github.io
-Simple project for  U
+Aplikasi ini tidak untuk komersil dan terlalu sederhana
