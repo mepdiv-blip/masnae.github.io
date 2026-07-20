@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ProyekKu - Keuangan & Laporan</title>
+    <title>OmnarPRO - Keuangan & Laporan</title>
 
     <!-- PWA Meta -->
     <meta name="theme-color" content="#14532D">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="ProyekKu">
-    <meta name="application-name" content="ProyekKu">
+    <meta name="apple-mobile-web-app-title" content="OmnarPRO">
+    <meta name="application-name" content="OmnarPRO">
     <meta name="description" content="Aplikasi Keuangan Proyek & Laporan Harian">
 
     <!-- ===== LOCAL FILES (OFFLINE) ===== -->
@@ -144,7 +144,7 @@
             <div class="w-20 h-20 bg-white/15 rounded-2xl flex items-center justify-center mb-4 mx-auto" style="border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(4px);">
                 <i class="fas fa-hard-hat text-4xl text-amber-400"></i>
             </div>
-            <h1 class="text-2xl font-black text-white text-center tracking-tight">ProyekKu</h1>
+            <h1 class="text-2xl font-black text-white text-center tracking-tight">OmnarPRO</h1>
             <p class="text-xs text-green-200 text-center mt-1 font-medium">Keuangan & Laporan Proyek</p>
         </div>
         <div class="mt-8">
@@ -158,7 +158,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <h1 class="text-lg font-black tracking-tight flex items-center gap-2">
-                        <i class="fas fa-hard-hat text-amber-400 text-sm"></i> ProyekKu
+                        <i class="fas fa-hard-hat text-amber-400 text-sm"></i> OmnarPRO
                     </h1>
                     <p class="text-xs opacity-70 font-medium" id="header-subtitle">Keuangan & Laporan Proyek</p>
                 </div>
@@ -252,7 +252,7 @@
         <div id="install-banner" class="install-banner hide">
             <div class="flex items-center gap-3">
                 <div class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center flex-shrink-0"><i class="fas fa-hard-hat text-amber-400 text-lg"></i></div>
-                <div class="flex-1 min-w-0"><p class="font-bold text-sm">Install ProyekKu</p><p class="text-xs opacity-80">Akses cepat dari home screen</p></div>
+                <div class="flex-1 min-w-0"><p class="font-bold text-sm">Install OmnarPRO</p><p class="text-xs opacity-80">Akses cepat dari home screen</p></div>
                 <button onclick="dismissInstallBanner()" class="text-white/60 text-lg px-2"><i class="fas fa-times"></i></button>
             </div>
             <div class="flex gap-2 mt-3">
@@ -352,7 +352,7 @@
         return c.toDataURL('image/png');
     }
     const i192=makeIcon(192),i512=makeIcon(512);
-    const m={name:'ProyekKu - Keuangan & Laporan',short_name:'ProyekKu',description:'Keuangan Proyek & Laporan Harian',start_url:'./index.html',scope:'./',display:'standalone',orientation:'portrait',background_color:'#14532D',theme_color:'#14532D',categories:['business','productivity'],icons:[{src:i192,sizes:'192x192',type:'image/png',purpose:'any maskable'},{src:i512,sizes:'512x512',type:'image/png',purpose:'any maskable'}],prefer_related_applications:false};
+    const m={name:'OmnarPRO - Keuangan & Laporan',short_name:'OmnarPRO',description:'Keuangan Proyek & Laporan Harian',start_url:'./index.html',scope:'./',display:'standalone',orientation:'portrait',background_color:'#14532D',theme_color:'#14532D',categories:['business','productivity'],icons:[{src:i192,sizes:'192x192',type:'image/png',purpose:'any maskable'},{src:i512,sizes:'512x512',type:'image/png',purpose:'any maskable'}],prefer_related_applications:false};
     const b=new Blob([JSON.stringify(m)],{type:'application/json'});
     const u=URL.createObjectURL(b);
     const l=document.createElement('link');l.rel='manifest';l.href=u;document.head.appendChild(l);
@@ -376,7 +376,7 @@ if('serviceWorker' in navigator){
 // ==================== INSTALL PROMPT ====================
 let deferredPrompt=null;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;document.getElementById('install-banner').classList.remove('hide');const h=document.getElementById('install-btn-header');h.classList.remove('hidden');h.style.display='flex';});
-window.addEventListener('appinstalled',()=>{deferredPrompt=null;document.getElementById('install-banner').classList.add('hide');document.getElementById('install-btn-header').classList.add('hidden');showToast('ProyekKu berhasil di-install!','success');});
+window.addEventListener('appinstalled',()=>{deferredPrompt=null;document.getElementById('install-banner').classList.add('hide');document.getElementById('install-btn-header').classList.add('hidden');showToast('OmnarPRO berhasil di-install!','success');});
 function promptInstall(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(r=>{if(r.outcome==='accepted')showToast('Menginstall...','success');deferredPrompt=null;document.getElementById('install-banner').classList.add('hide');});}else{showToast('Buka Chrome → menu → "Install App"','info');}}
 function dismissInstallBanner(){document.getElementById('install-banner').classList.add('hide');localStorage.setItem('pk_install_dismissed','1');}
 
@@ -629,7 +629,7 @@ async function sharePDFBlob(blob, filename){
             const canShare=navigator.canShare?navigator.canShare({files:[file]}):true;
             if(canShare){
                 await navigator.share({
-                    title:'Laporan ProyekKu',
+                    title:'Laporan OmnarPRO',
                     text:'Laporan keuangan dan harian proyek',
                     files:[file]
                 });
@@ -700,7 +700,7 @@ async function generatePDF(share){
             doc.setTextColor(255,255,255);
             doc.setFontSize(16);
             doc.setFont('helvetica','bold');
-            doc.text('ProyekKu',mg,11);
+            doc.text('OmnarPRO',mg,11);
             doc.setFontSize(9);
             doc.setFont('helvetica','normal');
             doc.text(title,mg,18);
@@ -960,7 +960,7 @@ async function generatePDF(share){
             doc.setPage(i);
             doc.setFontSize(6.5);
             doc.setTextColor(180,180,180);
-            doc.text('ProyekKu - Laporan otomatis | Halaman '+i+'/'+totalP,mg,291);
+            doc.text('OmnarPRO - Laporan otomatis | Halaman '+i+'/'+totalP,mg,291);
         }
 
         // ===== OUTPUT =====
@@ -969,7 +969,7 @@ async function generatePDF(share){
 
         hidePDFLoading();
 
-        const filename='Laporan-ProyekKu-'+todayStr()+'.pdf';
+        const filename='Laporan-OmnarPRO-'+todayStr()+'.pdf';
 
         // Generate blob
         let pdfBlob;
@@ -1045,7 +1045,7 @@ function exportAsText(){
     if(fd){ftx=ftx.filter(t=>t.date>=fd);frp=frp.filter(r=>r.date>=fd);}
     if(td){ftx=ftx.filter(t=>t.date<=td);frp=frp.filter(r=>r.date<=td);}
 
-    let t='=== PROYEKKU - LAPORAN ===\n';
+    let t='=== OmnarPRO - LAPORAN ===\n';
     t+='Dicetak: '+new Date().toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'})+'\n\n';
 
     if(tp==='finance'||tp==='full'){
@@ -1092,11 +1092,11 @@ function exportAsText(){
         });
     }
 
-    t+='\n=== Dicetak oleh ProyekKu ===\n';
+    t+='\n=== Dicetak oleh OmnarPRO ===\n';
 
     try{
         const blob=new Blob([t],{type:'text/plain;charset=utf-8'});
-        triggerDownload(blob,'Laporan-ProyekKu-'+todayStr()+'.txt','text/plain');
+        triggerDownload(blob,'Laporan-OmnarPRO-'+todayStr()+'.txt','text/plain');
         showToast('Laporan teks berhasil diunduh!','success');
     }catch(e){
         showToast('Gagal export','error');
@@ -1111,7 +1111,7 @@ function exportAsText(){
 function renderInstallGuide(){
     const isSA=window.matchMedia('(display-mode:standalone)').matches||window.navigator.standalone;
     const g=document.getElementById('install-guide');
-    if(isSA){g.innerHTML='<div class="bg-green-50 rounded-xl p-4 text-center"><i class="fas fa-check-circle text-3xl text-green-500 mb-2"></i><p class="font-bold text-sm text-green-800">ProyekKu Sudah Terinstall</p><p class="text-xs text-green-600 mt-1">Berjalan sebagai standalone app</p></div>';return;}
+    if(isSA){g.innerHTML='<div class="bg-green-50 rounded-xl p-4 text-center"><i class="fas fa-check-circle text-3xl text-green-500 mb-2"></i><p class="font-bold text-sm text-green-800">OmnarPRO Sudah Terinstall</p><p class="text-xs text-green-600 mt-1">Berjalan sebagai standalone app</p></div>';return;}
     g.innerHTML=`<div class="space-y-4 mt-2">
     <div class="flex gap-3 items-start"><div class="step-num">1</div><div><p class="font-bold text-sm">Host di Web Server HTTPS</p><p class="text-xs text-gray-500 mt-0.5">Upload semua file ke hosting (GitHub Pages, Netlify, Vercel)</p></div></div>
     <div class="flex gap-3 items-start"><div class="step-num">2</div><div><p class="font-bold text-sm">Buka di Chrome Android</p><p class="text-xs text-gray-500 mt-0.5">Akses URL → muncul banner install, atau tap menu ⋮ → "Install app"</p></div></div>
