@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>OmnarPro - Keuangan & Laporan</title>
+    <title>ProyekKu - Keuangan & Laporan</title>
 
     <!-- PWA Meta -->
     <meta name="theme-color" content="#14532D">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="OmnarPro">
-    <meta name="application-name" content="OmnarPro">
+    <meta name="apple-mobile-web-app-title" content="ProyekKu">
+    <meta name="application-name" content="ProyekKu">
     <meta name="description" content="Aplikasi Keuangan Proyek & Laporan Harian">
 
     <!-- ===== LOCAL FILES (OFFLINE) ===== -->
@@ -144,7 +144,7 @@
             <div class="w-20 h-20 bg-white/15 rounded-2xl flex items-center justify-center mb-4 mx-auto" style="border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(4px);">
                 <i class="fas fa-hard-hat text-4xl text-amber-400"></i>
             </div>
-            <h1 class="text-2xl font-black text-white text-center tracking-tight">OmnarPro</h1>
+            <h1 class="text-2xl font-black text-white text-center tracking-tight">ProyekKu</h1>
             <p class="text-xs text-green-200 text-center mt-1 font-medium">Keuangan & Laporan Proyek</p>
         </div>
         <div class="mt-8">
@@ -158,7 +158,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <h1 class="text-lg font-black tracking-tight flex items-center gap-2">
-                        <i class="fas fa-hard-hat text-amber-400 text-sm"></i> OmnarPro
+                        <i class="fas fa-hard-hat text-amber-400 text-sm"></i> ProyekKu
                     </h1>
                     <p class="text-xs opacity-70 font-medium" id="header-subtitle">Keuangan & Laporan Proyek</p>
                 </div>
@@ -252,7 +252,7 @@
         <div id="install-banner" class="install-banner hide">
             <div class="flex items-center gap-3">
                 <div class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center flex-shrink-0"><i class="fas fa-hard-hat text-amber-400 text-lg"></i></div>
-                <div class="flex-1 min-w-0"><p class="font-bold text-sm">Install OmnarPro</p><p class="text-xs opacity-80">Akses cepat dari home screen</p></div>
+                <div class="flex-1 min-w-0"><p class="font-bold text-sm">Install ProyekKu</p><p class="text-xs opacity-80">Akses cepat dari home screen</p></div>
                 <button onclick="dismissInstallBanner()" class="text-white/60 text-lg px-2"><i class="fas fa-times"></i></button>
             </div>
             <div class="flex gap-2 mt-3">
@@ -352,7 +352,7 @@
         return c.toDataURL('image/png');
     }
     const i192=makeIcon(192),i512=makeIcon(512);
-    const m={name:'OmnarPro - Keuangan & Laporan',short_name:'OmnarPro',description:'Keuangan Proyek & Laporan Harian',start_url:'./index.html',scope:'./',display:'standalone',orientation:'portrait',background_color:'#14532D',theme_color:'#14532D',categories:['business','productivity'],icons:[{src:i192,sizes:'192x192',type:'image/png',purpose:'any maskable'},{src:i512,sizes:'512x512',type:'image/png',purpose:'any maskable'}],prefer_related_applications:false};
+    const m={name:'ProyekKu - Keuangan & Laporan',short_name:'ProyekKu',description:'Keuangan Proyek & Laporan Harian',start_url:'./index.html',scope:'./',display:'standalone',orientation:'portrait',background_color:'#14532D',theme_color:'#14532D',categories:['business','productivity'],icons:[{src:i192,sizes:'192x192',type:'image/png',purpose:'any maskable'},{src:i512,sizes:'512x512',type:'image/png',purpose:'any maskable'}],prefer_related_applications:false};
     const b=new Blob([JSON.stringify(m)],{type:'application/json'});
     const u=URL.createObjectURL(b);
     const l=document.createElement('link');l.rel='manifest';l.href=u;document.head.appendChild(l);
@@ -376,7 +376,7 @@ if('serviceWorker' in navigator){
 // ==================== INSTALL PROMPT ====================
 let deferredPrompt=null;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;document.getElementById('install-banner').classList.remove('hide');const h=document.getElementById('install-btn-header');h.classList.remove('hidden');h.style.display='flex';});
-window.addEventListener('appinstalled',()=>{deferredPrompt=null;document.getElementById('install-banner').classList.add('hide');document.getElementById('install-btn-header').classList.add('hidden');showToast('OmnarPro berhasil di-install!','success');});
+window.addEventListener('appinstalled',()=>{deferredPrompt=null;document.getElementById('install-banner').classList.add('hide');document.getElementById('install-btn-header').classList.add('hidden');showToast('ProyekKu berhasil di-install!','success');});
 function promptInstall(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(r=>{if(r.outcome==='accepted')showToast('Menginstall...','success');deferredPrompt=null;document.getElementById('install-banner').classList.add('hide');});}else{showToast('Buka Chrome → menu → "Install App"','info');}}
 function dismissInstallBanner(){document.getElementById('install-banner').classList.add('hide');localStorage.setItem('pk_install_dismissed','1');}
 
@@ -394,8 +394,17 @@ function todayStr(){return new Date().toISOString().slice(0,10);}
 function showToast(msg,type='info'){const old=document.querySelector('.toast');if(old)old.remove();const ic={success:'fa-check-circle',error:'fa-exclamation-circle',info:'fa-info-circle'};const t=document.createElement('div');t.className='toast '+type;t.innerHTML='<i class="fas '+ic[type]+'"></i> '+msg;document.body.appendChild(t);setTimeout(()=>{t.style.opacity='0';t.style.transition='opacity .3s';setTimeout(()=>t.remove(),300);},2800);}
 function openModal(id){document.getElementById(id).classList.add('show');}
 function closeModal(id){document.getElementById(id).classList.remove('show');}
-function confirmDelete(msg,cb){document.getElementById('confirm-msg').textContent=msg;const btn=document.getElementById('confirm-btn');const nb=btn.cloneNode(true);btn.parentNode.replaceChild(nb,btn);nb.addEventListener('click',()=>{cb();closeModal('modal-confirm');});openModal('modal-confirm');}
-
+function confirmDelete(msg,cb){
+    document.getElementById('confirm-msg').textContent=msg;
+    const btn=document.getElementById('confirm-btn');
+    const nb=btn.cloneNode(true);
+    btn.parentNode.replaceChild(nb,btn);
+    // Reset teks dan warna tombol
+    nb.textContent='Hapus';
+    nb.style.background='var(--danger)';
+    nb.addEventListener('click',()=>{cb();closeModal('modal-confirm');});
+    openModal('modal-confirm');
+}
 // ==================== NAVIGASI ====================
 function switchTab(tab){currentTab=tab;document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-'+tab).classList.add('active');document.querySelectorAll('.nav-item').forEach((n,i)=>{const tabs=['dashboard','projects','reports','export'];n.classList.toggle('active',tabs[i]===tab);});const st={dashboard:'Keuangan & Laporan Proyek',projects:'Kelola Proyek Anda',reports:'Catatan Aktivitas Harian',export:'Export & Kirim PDF'};document.getElementById('header-subtitle').textContent=st[tab];renderCurrentView();}
 function renderCurrentView(){switch(currentTab){case'dashboard':renderDashboard();break;case'projects':renderProjectList();break;case'reports':renderReportList();break;case'export':populateExportSelect();renderInstallGuide();break;}}
@@ -453,32 +462,656 @@ function handleImageUpload(input){if(!input.files||!input.files[0])return;const 
 function saveReport(){const pid=document.getElementById('report-project').value,tl=document.getElementById('report-title').value.trim(),ct=document.getElementById('report-content').value.trim(),dt=document.getElementById('report-date').value;if(!tl){showToast('Judul wajib diisi','error');return;}if(!dt){showToast('Tanggal wajib diisi','error');return;}let rs=DB.get('reports');rs.push({id:DB.id(),projectId:pid,title:tl,content:ct,image:uploadedImage,date:dt,createdAt:todayStr()});DB.set('reports',rs);closeModal('modal-report');uploadedImage=null;showToast('Laporan disimpan','success');renderReportList();}
 function deleteReport(id){confirmDelete('Hapus laporan ini?',()=>{DB.set('reports',DB.get('reports').filter(r=>r.id!==id));showToast('Laporan dihapus','success');renderReportList();});}
 function viewImageBySrc(src){document.getElementById('image-viewer-img').src=src;openModal('modal-image');}
-
 // ==================== EXPORT PDF ====================
-function populateExportSelect(){const ps=DB.get('projects');document.getElementById('export-project').innerHTML='<option value="">-- Semua Proyek --</option>'+ps.map(p=>`<option value="${p.id}">${p.name}</option>`).join('');document.getElementById('export-from').value='';document.getElementById('export-to').value='';}
-
-async function generatePDF(share){
-    const pid=document.getElementById('export-project').value,fd=document.getElementById('export-from').value,td=document.getElementById('export-to').value,tp=document.querySelector('input[name="export-type"]:checked').value;
-    const ps=DB.get('projects'),txs=DB.get('transactions'),rps=DB.get('reports');
-    let fps=pid?ps.filter(p=>p.id===pid):ps,ftx=txs.filter(t=>!pid||t.projectId===pid),frp=rps.filter(r=>!pid||r.projectId===pid);
-    if(fd){ftx=ftx.filter(t=>t.date>=fd);frp=frp.filter(r=>r.date>=fd);}if(td){ftx=ftx.filter(t=>t.date<=td);frp=frp.filter(r=>r.date<=td);}
-    if(!fps.length){showToast('Tidak ada data','error');return;}
-    showToast('Membuat PDF...','info');
-    try{const{jsPDF}=window.jspdf;const doc=new jsPDF('p','mm','a4');const pw=doc.internal.pageSize.getWidth();const mg=15;let y=15;
-    function hdr(t){doc.setFillColor(20,83,45);doc.rect(0,0,pw,32,'F');doc.setTextColor(255,255,255);doc.setFontSize(18);doc.setFont('helvetica','bold');doc.text('OmnarPro',mg,14);doc.setFontSize(10);doc.setFont('helvetica','normal');doc.text(t,mg,22);doc.setFontSize(8);doc.text('Dicetak: '+new Date().toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'}),mg,28);doc.setTextColor(0,0,0);y=40;}
-    function ckp(n){if(y+n>275){doc.addPage();y=15;}}
-    if(tp==='finance'||tp==='full'){hdr('Laporan Keuangan Proyek');fps.forEach(p=>{ckp(60);const pt=ftx.filter(t=>t.projectId===p.id);let ic=0,ex=0;pt.forEach(t=>{if(t.type==='income')ic+=Number(t.amount)||0;else ex+=Number(t.amount)||0;});doc.setFontSize(13);doc.setFont('helvetica','bold');doc.setTextColor(20,83,45);doc.text(p.name,mg,y);y+=5;doc.setFontSize(9);doc.setFont('helvetica','normal');doc.setTextColor(100,100,100);doc.text(p.description||'Tanpa deskripsi',mg,y);y+=8;doc.setFillColor(241,245,240);doc.roundedRect(mg,y,pw-2*mg,22,3,3,'F');doc.setFontSize(9);doc.setFont('helvetica','bold');doc.setTextColor(22,101,52);doc.text('Budget: '+formatRp(p.budget),mg+4,y+6);doc.setTextColor(22,163,74);doc.text('Pemasukan: '+formatRp(ic),mg+4,y+12);doc.setTextColor(220,38,38);doc.text('Pengeluaran: '+formatRp(ex),mg+4,y+18);doc.setTextColor(217,119,6);doc.text('Sisa: '+formatRp(p.budget-ex),mg+80,y+6);doc.setTextColor(30,41,59);const pc=p.budget>0?Math.round((ex/p.budget)*100):0;doc.text('Terpakai: '+pc+'%',mg+80,y+12);y+=28;if(pt.length>0){const td2=pt.sort((a,b)=>a.date.localeCompare(b.date)).map(t=>[formatDate(t.date),t.description||'-',t.type==='income'?'Pemasukan':'Pengeluaran',(t.type==='income'?'+ ':'- ')+formatRp(t.amount)]);doc.autoTable({startY:y,head:[['Tanggal','Keterangan','Jenis','Jumlah']],body:td2,margin:{left:mg,right:mg},styles:{fontSize:8,cellPadding:2},headStyles:{fillColor:[20,83,45],textColor:255,fontStyle:'bold'},alternateRowStyles:{fillColor:[248,250,246]},columnStyles:{3:{halign:'right'}}});y=doc.lastAutoTable.finalY+8;}else{doc.setFontSize(9);doc.setTextColor(150,150,150);doc.text('Belum ada transaksi',mg,y+5);y+=12;}});}
-    if(tp==='daily'||tp==='full'){if(tp==='full')doc.addPage();hdr('Laporan Harian Proyek');if(!frp.length){doc.setFontSize(10);doc.setTextColor(150,150,150);doc.text('Tidak ada laporan dalam periode ini.',mg,y);}const gp={};frp.sort((a,b)=>b.date.localeCompare(a.date)).forEach(r=>{if(!gp[r.date])gp[r.date]=[];gp[r.date].push(r);});Object.keys(gp).sort((a,b)=>b.localeCompare(a)).forEach(d=>{ckp(30);doc.setFillColor(217,119,6);doc.roundedRect(mg,y,pw-2*mg,7,2,2,'F');doc.setFontSize(9);doc.setFont('helvetica','bold');doc.setTextColor(255,255,255);doc.text(formatDateFull(d),mg+3,y+5);doc.setTextColor(0,0,0);y+=10;gp[d].forEach(r=>{ckp(40);const pj=ps.find(p=>p.id===r.projectId);doc.setFontSize(10);doc.setFont('helvetica','bold');doc.setTextColor(30,41,59);doc.text(r.title,mg,y);y+=4;doc.setFontSize(8);doc.setFont('helvetica','normal');doc.setTextColor(100,100,100);doc.text('Proyek: '+(pj?pj.name:'-'),mg,y);y+=4;doc.setTextColor(50,50,50);const ln=doc.splitTextToSize(r.content||'',pw-2*mg);doc.text(ln,mg,y);y+=ln.length*3.5+2;if(r.image){try{ckp(50);doc.addImage(r.image,'JPEG',mg,y,60,45);y+=49;}catch(e){doc.setTextColor(200,50,50);doc.text('[Gagal muat gambar]',mg,y);y+=5;}}doc.setDrawColor(230,230,230);doc.line(mg,y,pw-mg,y);y+=5;});});}
-    const pc=doc.internal.getNumberOfPages();for(let i=1;i<=pc;i++){doc.setPage(i);doc.setFontSize(7);doc.setTextColor(180,180,180);doc.text('OmnarPro - Laporan otomatis',mg,290);doc.text('Halaman '+i+'/'+pc,pw-mg,290,{align:'right'});}
-    if(share){try{const bl=doc.output('blob');const fl=new File([bl],'laporan-OmnarPro.pdf',{type:'application/pdf'});if(navigator.share&&navigator.canShare&&navigator.canShare({files:[fl]})){await navigator.share({title:'Laporan OmnarPro',text:'Laporan keuangan dan harian',files:[fl]});showToast('PDF berhasil dikirim!','success');}else{doc.save('laporan-OmnarPro.pdf');showToast('Browser tidak mendukung share. File diunduh.','info');}}catch(e){if(e.name!=='AbortError'){doc.save('laporan-OmnarPro.pdf');showToast('Share gagal. File diunduh.','info');}}}else{doc.save('laporan-OmnarPro.pdf');showToast('PDF berhasil diunduh!','success');}
-    }catch(e){console.error(e);showToast('Gagal membuat PDF: '+e.message,'error');}
+function populateExportSelect(){
+    const ps=DB.get('projects');
+    document.getElementById('export-project').innerHTML='<option value="">-- Semua Proyek --</option>'+ps.map(p=>`<option value="${p.id}">${p.name}</option>`).join('');
+    document.getElementById('export-from').value='';
+    document.getElementById('export-to').value='';
 }
+
+// Loading overlay
+function showPDFLoading(){
+    let ov=document.getElementById('pdf-loading-overlay');
+    if(!ov){
+        ov=document.createElement('div');
+        ov.id='pdf-loading-overlay';
+        ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9999;display:flex;align-items:center;justify-content:center;';
+        ov.innerHTML=`
+            <div style="background:white;border-radius:20px;padding:28px 24px;text-align:center;max-width:300px;width:90%;">
+                <div style="width:44px;height:44px;border:4px solid #e2e8f0;border-top-color:#22C55E;border-radius:50%;animation:pdfspin .8s linear infinite;margin:0 auto 14px;"></div>
+                <p style="font-weight:800;font-size:15px;color:#1E293B;margin:0 0 4px;">Membuat PDF...</p>
+                <p style="font-size:12px;color:#94A3B8;margin:0;" id="pdf-loading-status">Memulai</p>
+            </div>
+            <style>@keyframes pdfspin{to{transform:rotate(360deg)}}</style>`;
+        document.body.appendChild(ov);
+    }else{ov.style.display='flex';}
+}
+function updatePDFStatus(msg){const el=document.getElementById('pdf-loading-status');if(el)el.textContent=msg;}
+function hidePDFLoading(){const ov=document.getElementById('pdf-loading-overlay');if(ov)ov.style.display='none';}
+
+// Cek & load jsPDF dinamically
+async function ensureJSPDF(){
+    // Sudah ada?
+    if(window.jspdf && window.jspdf.jsPDF) return true;
+
+    updatePDFStatus('Memuat library PDF...');
+
+    // Coba load dari lokal dulu
+    try{
+        await loadScript('js/jspdf.umd.min.js');
+        if(window.jspdf && window.jspdf.jsPDF) return true;
+    }catch(e){console.warn('jsPDF lokal gagal:',e);}
+
+    // Fallback: load dari CDN
+    try{
+        await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
+        if(window.jspdf && window.jspdf.jsPDF) return true;
+    }catch(e){console.warn('jsPDF CDN gagal:',e);}
+
+    return false;
+}
+
+// Cek & load autoTable
+async function ensureAutoTable(){
+    if(typeof window.jspdf !== 'undefined' && window.jspdf.jsPDF && window.jspdf.jsPDF.API && window.jspdf.jsPDF.API.autoTable) return true;
+
+    try{
+        await loadScript('js/jspdf-autotable.min.js');
+        return true;
+    }catch(e){
+        try{
+            await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js');
+            return true;
+        }catch(e2){return false;}
+    }
+}
+
+function loadScript(src){
+    return new Promise((resolve,reject)=>{
+        // Cek sudah ada
+        const existing=document.querySelector('script[src="'+src+'"]');
+        if(existing){resolve();return;}
+
+        const s=document.createElement('script');
+        s.src=src;
+        s.onload=resolve;
+        s.onerror=reject;
+        document.head.appendChild(s);
+    });
+}
+
+// Resize gambar ke ukuran kecil untuk PDF
+function resizeImgForPDF(base64){
+    return new Promise((resolve)=>{
+        if(!base64||base64.length<100){resolve(null);return;}
+        try{
+            const img=new Image();
+            img.onload=()=>{
+                const maxD=350; // Ukuran kecil untuk Android
+                let w=img.width,h=img.height;
+                if(w>maxD||h>maxD){
+                    if(w>h){h=Math.round(h*maxD/w);w=maxD;}
+                    else{w=Math.round(w*maxD/h);h=maxD;}
+                }
+                const c=document.createElement('canvas');
+                c.width=Math.max(1,w);c.height=Math.max(1,h);
+                c.getContext('2d').drawImage(img,0,0,w,h);
+                resolve(c.toDataURL('image/jpeg',0.5));
+            };
+            img.onerror=()=>resolve(null);
+            img.src=base64;
+        }catch(e){resolve(null);}
+    });
+}
+
+// Download blob yang kompatibel dengan Android
+function triggerDownload(blob, filename, mimeType){
+    return new Promise((resolve,reject)=>{
+        // Metode 1: Blob URL + anchor click
+        try{
+            const url=URL.createObjectURL(blob);
+            const a=document.createElement('a');
+            a.href=url;
+            a.download=filename;
+            a.style.cssText='position:fixed;left:-9999px;top:-9999px;';
+            document.body.appendChild(a);
+
+            // Timeout untuk Android
+            setTimeout(()=>{
+                a.click();
+                setTimeout(()=>{
+                    URL.revokeObjectURL(url);
+                    a.remove();
+                    resolve(true);
+                },3000);
+            },100);
+            return; // Jangan lanjut ke metode lain
+        }catch(e){
+            console.warn('Download metode 1 gagal:',e);
+        }
+
+        // Metode 2: navigator.msSaveBlob (lama)
+        try{
+            if(navigator.msSaveBlob){
+                navigator.msSaveBlob(blob,filename);
+                resolve(true);
+                return;
+            }
+        }catch(e){}
+
+        // Metode 3: Data URI
+        try{
+            const reader=new FileReader();
+            reader.onload=()=>{
+                const a=document.createElement('a');
+                a.href=reader.result;
+                a.download=filename;
+                a.style.cssText='position:fixed;left:-9999px;';
+                document.body.appendChild(a);
+                a.click();
+                setTimeout(()=>a.remove(),3000);
+                resolve(true);
+            };
+            reader.readAsDataURL(blob);
+        }catch(e){
+            reject(e);
+        }
+    });
+}
+
+// Share PDF
+async function sharePDFBlob(blob, filename){
+    try{
+        const file=new File([blob],filename,{type:'application/pdf'});
+
+        if(navigator.share){
+            const canShare=navigator.canShare?navigator.canShare({files:[file]}):true;
+            if(canShare){
+                await navigator.share({
+                    title:'Laporan ProyekKu',
+                    text:'Laporan keuangan dan harian proyek',
+                    files:[file]
+                });
+                return{ok:true,method:'share'};
+            }
+        }
+    }catch(e){
+        if(e.name==='AbortError') return{ok:true,method:'cancelled'};
+        console.warn('Share gagal:',e);
+    }
+
+    // Fallback: download
+    await triggerDownload(blob,filename,'application/pdf');
+    return{ok:true,method:'download'};
+}
+
+// ==================== FUNGSI UTAMA GENERATE PDF ====================
+async function generatePDF(share){
+    const pid=document.getElementById('export-project').value;
+    const fd=document.getElementById('export-from').value;
+    const td=document.getElementById('export-to').value;
+    const tp=document.querySelector('input[name="export-type"]:checked').value;
+
+    const ps=DB.get('projects');
+    const txs=DB.get('transactions');
+    const rps=DB.get('reports');
+
+    let fps=pid?ps.filter(p=>p.id===pid):ps;
+    let ftx=txs.filter(t=>!pid||t.projectId===pid);
+    let frp=rps.filter(r=>!pid||r.projectId===pid);
+    if(fd){ftx=ftx.filter(t=>t.date>=fd);frp=frp.filter(r=>r.date>=fd);}
+    if(td){ftx=ftx.filter(t=>t.date<=td);frp=frp.filter(r=>r.date<=td);}
+
+    if(!fps.length){showToast('Tidak ada data untuk di-export','error');return;}
+
+    showPDFLoading();
+    updatePDFStatus('Memeriksa library...');
+
+    // Beri waktu UI render
+    await new Promise(r=>setTimeout(r,300));
+
+    // Pastikan library loaded
+    const hasJSPDF=await ensureJSPDF();
+    if(!hasJSPDF){
+        hidePDFLoading();
+        showToast('Library PDF gagal dimuat. Menggunakan export teks.','error');
+        setTimeout(()=>exportAsText(),500);
+        return;
+    }
+
+    const hasAT=await ensureAutoTable();
+    // AutoTable tidak wajib, bisa tanpa tabel
+
+    updatePDFStatus('Menyiapkan dokumen...');
+    await new Promise(r=>setTimeout(r,200));
+
+    try{
+        const{jsPDF}=window.jspdf;
+        const doc=new jsPDF({orientation:'p',unit:'mm',format:'a4',compress:true});
+        const pw=doc.internal.pageSize.getWidth();
+        const mg=14;
+        let y=12;
+
+        // ---- HEADER FUNGSI ----
+        function addHeader(title){
+            doc.setFillColor(20,83,45);
+            doc.rect(0,0,pw,28,'F');
+            doc.setTextColor(255,255,255);
+            doc.setFontSize(16);
+            doc.setFont('helvetica','bold');
+            doc.text('ProyekKu',mg,11);
+            doc.setFontSize(9);
+            doc.setFont('helvetica','normal');
+            doc.text(title,mg,18);
+            doc.setFontSize(7);
+            doc.text(new Date().toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'}),mg,24);
+            doc.setTextColor(0,0,0);
+            y=34;
+        }
+
+        function checkSpace(needed){
+            if(y+needed>278){
+                doc.addPage();
+                y=12;
+            }
+        }
+
+        function drawSeparator(){
+            doc.setDrawColor(220,220,220);
+            doc.setLineWidth(0.3);
+            doc.line(mg,y,pw-mg,y);
+            y+=3;
+        }
+
+        // ===== LAPORAN KEUANGAN =====
+        if(tp==='finance'||tp==='full'){
+            updatePDFStatus('Membuat laporan keuangan...');
+            await new Promise(r=>setTimeout(r,150));
+
+            addHeader('Laporan Keuangan Proyek');
+
+            for(let i=0;i<fps.length;i++){
+                const p=fps[i];
+                checkSpace(55);
+
+                // Nama proyek
+                doc.setFontSize(12);
+                doc.setFont('helvetica','bold');
+                doc.setTextColor(20,83,45);
+                doc.text(p.name,mg,y);
+                y+=4;
+
+                // Deskripsi
+                if(p.description){
+                    doc.setFontSize(8);
+                    doc.setFont('helvetica','normal');
+                    doc.setTextColor(120,120,120);
+                    const descLines=doc.splitTextToSize(p.description,pw-2*mg);
+                    doc.text(descLines.slice(0,2),mg,y);
+                    y+=descLines.slice(0,2).length*3+2;
+                }
+
+                // Hitung keuangan
+                const pt=ftx.filter(t=>t.projectId===p.id);
+                let inc=0,exp=0;
+                pt.forEach(t=>{
+                    if(t.type==='income')inc+=Number(t.amount)||0;
+                    else exp+=Number(t.amount)||0;
+                });
+                const sisa=p.budget-exp;
+                const pct=p.budget>0?Math.round((exp/p.budget)*100):0;
+
+                // Kotak ringkasan
+                checkSpace(24);
+                doc.setFillColor(240,248,240);
+                doc.roundedRect(mg,y,pw-2*mg,20,2,2,'F');
+
+                doc.setFontSize(8);
+                doc.setFont('helvetica','bold');
+
+                doc.setTextColor(22,101,52);
+                doc.text('Budget: '+formatRp(p.budget),mg+3,y+5);
+
+                doc.setTextColor(22,163,74);
+                doc.text('Pemasukan: '+formatRp(inc),mg+3,y+10);
+
+                doc.setTextColor(185,28,28);
+                doc.text('Pengeluaran: '+formatRp(exp),mg+3,y+15);
+
+                doc.setTextColor(180,83,9);
+                doc.text('Sisa: '+formatRp(sisa),mg+75,y+5);
+
+                doc.setTextColor(30,41,59);
+                doc.text('Terpakai: '+pct+'%',mg+75,y+10);
+
+                const statusTxt=pct>90?'MELEBIHI BATAS':pct>70?'HATI-HATI':'AMAN';
+                doc.setTextColor(pct>90?185:22,pct>90?28:163,pct>90?28:74);
+                doc.text(statusTxt,mg+75,y+15);
+
+                y+=24;
+
+                // Tabel transaksi
+                if(pt.length>0){
+                    const sorted=pt.sort((a,b)=>a.date.localeCompare(b.date));
+                    const tdata=sorted.map(t=>[
+                        formatDate(t.date),
+                        (t.description||'-').substring(0,35),
+                        t.type==='income'?'Masuk':'Keluar',
+                        (t.type==='income'?'+':'-')+formatRp(t.amount)
+                    ]);
+
+                    if(hasAT && doc.autoTable){
+                        doc.autoTable({
+                            startY:y,
+                            head:[['Tanggal','Keterangan','Jenis','Jumlah']],
+                            body:tdata,
+                            margin:{left:mg,right:mg},
+                            styles:{fontSize:7,cellPadding:1.5,overflow:'ellipsize'},
+                            headStyles:{fillColor:[20,83,45],textColor:255,fontStyle:'bold',fontSize:7.5},
+                            alternateRowStyles:{fillColor:[248,250,246]},
+                            columnStyles:{
+                                0:{cellWidth:22},
+                                1:{cellWidth:50},
+                                2:{cellWidth:18},
+                                3:{halign:'right',cellWidth:28}
+                            }
+                        });
+                        y=doc.lastAutoTable.finalY+6;
+                    }else{
+                        // Tabel manual tanpa autoTable
+                        doc.setFontSize(7);
+                        doc.setFont('helvetica','bold');
+                        doc.setFillColor(20,83,45);
+                        doc.rect(mg,y,pw-2*mg,5,'F');
+                        doc.setTextColor(255,255,255);
+                        doc.text('Tanggal',mg+1,y+3.5);
+                        doc.text('Keterangan',mg+24,y+3.5);
+                        doc.text('Jenis',mg+76,y+3.5);
+                        doc.text('Jumlah',mg+96,y+3.5);
+                        y+=5;
+
+                        doc.setFont('helvetica','normal');
+                        doc.setTextColor(30,41,59);
+                        tdata.forEach((row,idx)=>{
+                            checkSpace(5);
+                            if(idx%2===0){doc.setFillColor(248,250,246);doc.rect(mg,y,pw-2*mg,4.5,'F');}
+                            doc.text(row[0],mg+1,y+3);
+                            doc.text(row[1],mg+24,y+3);
+                            doc.text(row[2],mg+76,y+3);
+                            doc.text(row[3],mg+96,y+3);
+                            y+=4.5;
+                        });
+                        y+=4;
+                    }
+                }else{
+                    doc.setFontSize(8);
+                    doc.setTextColor(160,160,160);
+                    doc.text('Belum ada transaksi untuk proyek ini.',mg,y+3);
+                    y+=8;
+                }
+
+                drawSeparator();
+                y+=2;
+            }
+        }
+
+        // ===== LAPORAN HARIAN =====
+        if(tp==='daily'||tp==='full'){
+            if(tp==='full'){doc.addPage();y=12;}
+
+            updatePDFStatus('Membuat laporan harian...');
+            await new Promise(r=>setTimeout(r,150));
+
+            addHeader('Laporan Harian Proyek');
+
+            if(!frp.length){
+                doc.setFontSize(9);
+                doc.setTextColor(160,160,160);
+                doc.text('Tidak ada laporan dalam periode ini.',mg,y+5);
+            }
+
+            // Kelompokkan per tanggal
+            const grouped={};
+            frp.sort((a,b)=>b.date.localeCompare(a.date)).forEach(r=>{
+                if(!grouped[r.date])grouped[r.date]=[];
+                grouped[r.date].push(r);
+            });
+
+            const sortedDates=Object.keys(grouped).sort((a,b)=>b.localeCompare(a));
+
+            for(let di=0;di<sortedDates.length;di++){
+                const dateKey=sortedDates[di];
+                const dateReports=grouped[dateKey];
+
+                checkSpace(20);
+
+                // Header tanggal
+                doc.setFillColor(217,119,6);
+                doc.roundedRect(mg,y,pw-2*mg,6,1.5,1.5,'F');
+                doc.setFontSize(8);
+                doc.setFont('helvetica','bold');
+                doc.setTextColor(255,255,255);
+                doc.text(formatDateFull(dateKey),mg+2,y+4);
+                doc.setTextColor(0,0,0);
+                y+=9;
+
+                for(let ri=0;ri<dateReports.length;ri++){
+                    const r=dateReports[ri];
+                    checkSpace(25);
+
+                    const pj=ps.find(p=>p.id===r.projectId);
+
+                    // Judul laporan
+                    doc.setFontSize(9.5);
+                    doc.setFont('helvetica','bold');
+                    doc.setTextColor(30,41,59);
+                    doc.text(r.title,mg,y);
+                    y+=3.5;
+
+                    // Proyek
+                    doc.setFontSize(7.5);
+                    doc.setFont('helvetica','normal');
+                    doc.setTextColor(217,119,6);
+                    doc.text('Proyek: '+(pj?pj.name:'-'),mg,y);
+                    y+=3.5;
+
+                    // Isi
+                    if(r.content){
+                        doc.setTextColor(60,60,60);
+                        const lines=doc.splitTextToSize(r.content.substring(0,400),pw-2*mg);
+                        doc.text(lines.slice(0,10),mg,y);
+                        y+=lines.slice(0,10).length*3+2;
+                    }
+
+                    // Gambar
+                    if(r.image){
+                        updatePDFStatus('Memproses gambar '+(ri+1)+'/'+dateReports.length+'...');
+                        await new Promise(r=>setTimeout(r,50));
+
+                        try{
+                            const small=await resizeImgForPDF(r.image);
+                            if(small){
+                                checkSpace(40);
+                                doc.addImage(small,'JPEG',mg,y,45,34);
+                                y+=38;
+                            }
+                        }catch(imgErr){
+                            console.warn('Gambah gagal:',imgErr);
+                            doc.setFontSize(7);
+                            doc.setTextColor(180,180,180);
+                            doc.text('[Gambar tidak dapat ditampilkan]',mg,y+3);
+                            y+=6;
+                        }
+                    }
+
+                    drawSeparator();
+                }
+                y+=3;
+            }
+        }
+
+        // ===== FOOTER SETIAP HALAMAN =====
+        updatePDFStatus('Menyelesaikan...');
+        await new Promise(r=>setTimeout(r,100));
+
+        const totalP=doc.internal.getNumberOfPages();
+        for(let i=1;i<=totalP;i++){
+            doc.setPage(i);
+            doc.setFontSize(6.5);
+            doc.setTextColor(180,180,180);
+            doc.text('ProyekKu - Laporan otomatis | Halaman '+i+'/'+totalP,mg,291);
+        }
+
+        // ===== OUTPUT =====
+        updatePDFStatus(share?'Membuka menu kirim...':'Mengunduh...');
+        await new Promise(r=>setTimeout(r,400));
+
+        hidePDFLoading();
+
+        const filename='Laporan-ProyekKu-'+todayStr()+'.pdf';
+
+        // Generate blob
+        let pdfBlob;
+        try{
+            pdfBlob=doc.output('blob');
+        }catch(e1){
+            try{
+                // Fallback: output arraybuffer lalu buat blob manual
+                const ab=doc.output('arraybuffer');
+                pdfBlob=new Blob([ab],{type:'application/pdf'});
+            }catch(e2){
+                try{
+                    const base64=doc.output('datauristring');
+                    // Konversi data URI ke blob
+                    const byteString=atob(base64.split(',')[1]);
+                    const ab2=new ArrayBuffer(byteString.length);
+                    const ia=new Uint8Array(ab2);
+                    for(let j=0;j<byteString.length;j++)ia[j]=byteString.charCodeAt(j);
+                    pdfBlob=new Blob([ab2],{type:'application/pdf'});
+                }catch(e3){
+                    hidePDFLoading();
+                    showToast('Gagal membuat file PDF','error');
+                    setTimeout(()=>exportAsText(),500);
+                    return;
+                }
+            }
+        }
+
+        // Cek ukuran blob
+        if(!pdfBlob||pdfBlob.size<100){
+            hidePDFLoading();
+            showToast('File PDF terlalu kecil/tidak valid','error');
+            setTimeout(()=>exportAsText(),500);
+            return;
+        }
+
+        if(share){
+            const result=await sharePDFBlob(pdfBlob,filename);
+            if(result.method==='share'){
+                showToast('PDF berhasil dikirim!','success');
+            }else{
+                showToast('PDF diunduh (share tidak tersedia)','info');
+            }
+        }else{
+            try{
+                await triggerDownload(pdfBlob,filename,'application/pdf');
+                showToast('PDF berhasil diunduh! ('+Math.round(pdfBlob.size/1024)+' KB)','success');
+            }catch(e){
+                showToast('Gagal mengunduh PDF','error');
+                setTimeout(()=>exportAsText(),500);
+            }
+        }
+
+    }catch(e){
+        console.error('PDF Error:',e);
+        hidePDFLoading();
+        showToast('Gagal membuat PDF: '+(e.message||'Unknown error').substring(0,50),'error');
+        setTimeout(()=>exportAsText(),600);
+    }
+}
+
+// ==================== EXPORT TEKS FALLBACK ====================
+function exportAsText(){
+    const pid=document.getElementById('export-project').value;
+    const fd=document.getElementById('export-from').value;
+    const td=document.getElementById('export-to').value;
+    const tp=document.querySelector('input[name="export-type"]:checked').value;
+
+    const ps=DB.get('projects'),txs=DB.get('transactions'),rps=DB.get('reports');
+    let fps=pid?ps.filter(p=>p.id===pid):ps;
+    let ftx=txs.filter(t=>!pid||t.projectId===pid);
+    let frp=rps.filter(r=>!pid||r.projectId===pid);
+    if(fd){ftx=ftx.filter(t=>t.date>=fd);frp=frp.filter(r=>r.date>=fd);}
+    if(td){ftx=ftx.filter(t=>t.date<=td);frp=frp.filter(r=>r.date<=td);}
+
+    let t='=== PROYEKKU - LAPORAN ===\n';
+    t+='Dicetak: '+new Date().toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'})+'\n\n';
+
+    if(tp==='finance'||tp==='full'){
+        t+='--- LAPORAN KEUANGAN ---\n\n';
+        fps.forEach(p=>{
+            const pt=ftx.filter(tx=>tx.projectId===p.id);
+            let ic=0,ex=0;
+            pt.forEach(tx=>{if(tx.type==='income')ic+=Number(tx.amount)||0;else ex+=Number(tx.amount)||0;});
+            t+='>> '+p.name.toUpperCase()+'\n';
+            t+='   '+((p.description||'-'))+'\n';
+            t+='   Budget     : '+formatRp(p.budget)+'\n';
+            t+='   Pemasukan  : '+formatRp(ic)+'\n';
+            t+='   Pengeluaran: '+formatRp(ex)+'\n';
+            t+='   Sisa       : '+formatRp(p.budget-ex)+'\n';
+            t+='   Terpakai   : '+(p.budget>0?Math.round((ex/p.budget)*100):0)+'%\n';
+            if(pt.length>0){
+                t+='\n   Tanggal       Keterangan           Jenis      Jumlah\n';
+                t+='   ----------    ----------------    ------    ---------------\n';
+                pt.sort((a,b)=>a.date.localeCompare(b.date)).forEach(tx=>{
+                    const d=formatDate(tx.date).padEnd(14);
+                    const desc=(tx.description||'-').substring(0,18).padEnd(20);
+                    const j=(tx.type==='income'?'Masuk':'Keluar').padEnd(9);
+                    const amt=(tx.type==='income'?'+':'-')+formatRp(tx.amount);
+                    t+='   '+d+desc+j+amt+'\n';
+                });
+            }
+            t+='\n';
+        });
+    }
+
+    if(tp==='daily'||tp==='full'){
+        t+='--- LAPORAN HARIAN ---\n\n';
+        const gp={};
+        frp.sort((a,b)=>b.date.localeCompare(a.date)).forEach(r=>{if(!gp[r.date])gp[r.date]=[];gp[r.date].push(r);});
+        Object.keys(gp).sort((a,b)=>b.localeCompare(a)).forEach(d=>{
+            t+='>> '+formatDateFull(d)+'\n';
+            gp[d].forEach(r=>{
+                const pj=ps.find(p=>p.id===r.projectId);
+                t+='   - '+r.title+' ['+(pj?pj.name:'-')+']\n';
+                t+='     '+(r.content||'-').replace(/\n/g,'\n     ')+'\n';
+                if(r.image) t+='     [Terlampir foto]\n';
+            });
+            t+='\n';
+        });
+    }
+
+    t+='\n=== Dicetak oleh ProyekKu ===\n';
+
+    try{
+        const blob=new Blob([t],{type:'text/plain;charset=utf-8'});
+        triggerDownload(blob,'Laporan-ProyekKu-'+todayStr()+'.txt','text/plain');
+        showToast('Laporan teks berhasil diunduh!','success');
+    }catch(e){
+        showToast('Gagal export','error');
+    }
+}
+
+
+
+
 
 // ==================== PANDUAN INSTALL ====================
 function renderInstallGuide(){
     const isSA=window.matchMedia('(display-mode:standalone)').matches||window.navigator.standalone;
     const g=document.getElementById('install-guide');
-    if(isSA){g.innerHTML='<div class="bg-green-50 rounded-xl p-4 text-center"><i class="fas fa-check-circle text-3xl text-green-500 mb-2"></i><p class="font-bold text-sm text-green-800">OmnarPro Sudah Terinstall</p><p class="text-xs text-green-600 mt-1">Berjalan sebagai standalone app</p></div>';return;}
+    if(isSA){g.innerHTML='<div class="bg-green-50 rounded-xl p-4 text-center"><i class="fas fa-check-circle text-3xl text-green-500 mb-2"></i><p class="font-bold text-sm text-green-800">ProyekKu Sudah Terinstall</p><p class="text-xs text-green-600 mt-1">Berjalan sebagai standalone app</p></div>';return;}
     g.innerHTML=`<div class="space-y-4 mt-2">
     <div class="flex gap-3 items-start"><div class="step-num">1</div><div><p class="font-bold text-sm">Host di Web Server HTTPS</p><p class="text-xs text-gray-500 mt-0.5">Upload semua file ke hosting (GitHub Pages, Netlify, Vercel)</p></div></div>
     <div class="flex gap-3 items-start"><div class="step-num">2</div><div><p class="font-bold text-sm">Buka di Chrome Android</p><p class="text-xs text-gray-500 mt-0.5">Akses URL → muncul banner install, atau tap menu ⋮ → "Install app"</p></div></div>
