@@ -1,4 +1,4 @@
-const CACHE_NAME = 'proyekku-offline-v1';
+const CACHE_NAME = 'OmnarPRO-offline-v1';
 
 const ASSETS = [
     './',
